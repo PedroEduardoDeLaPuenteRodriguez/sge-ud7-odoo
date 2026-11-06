@@ -8,10 +8,10 @@
 
 ## Índice
 
-1. [Ficha de la empresa](ficha-empresa.md)
+1. Ficha de la empresa
    - Nombre
    - Sector
    - Actividad
    - Datos ficticios
    - Catálogo
-3. Enlace al vídeo (ver apartado **Portada**)
+3. Enlace al vídeo: 
