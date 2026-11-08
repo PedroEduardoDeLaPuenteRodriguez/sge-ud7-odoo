@@ -12,7 +12,6 @@ Cada persona recibe únicamente los permisos que necesita para su puesto:
 - El **responsable de ventas** supervisa a todo el equipo comercial, pero no factura.
 - **Administración** factura y registra pagos, pero no gestiona ventas.
 
----
 
 ## 2. Plantilla de usuarios
 
@@ -23,7 +22,7 @@ Cada persona recibe únicamente los permisos que necesita para su puesto:
 | **Álvaro Gutiérrez Sanz** | alvaro.gutierrez@solverde-energia.example | Foto o avatar con iniciales **AG** | Responsable de ventas | Interno |
 | **Lucía Fernández Mora** | lucia.fernandez@solverde-energia.example | Avatar con iniciales **LF** | Comercial | Interno |
 | **Javier Morales Ortega** | javier.morales@solverde-energia.example | Avatar con iniciales **JM** | Administración / Facturación | Interno |
-.
+
 
 ### 2.2. Usuario portal (cliente)
 
@@ -31,8 +30,6 @@ Cada persona recibe únicamente los permisos que necesita para su puesto:
 |---|---|---|---|
 | **Carmen Ruiz Navarro** | carmen.ruiz@correo-ficticio.example | Cliente particular (instalación de un kit solar en su vivienda) | Portal |
 
-
----
 
 ## 3. Tipo de usuario asignado
 
@@ -44,7 +41,6 @@ Cada persona recibe únicamente los permisos que necesita para su puesto:
 
 **Justificación del portal:** el cliente particular necesita consultar su presupuesto y su factura y poder pagarla, pero no debe ver datos de otros clientes ni la gestión interna de la empresa.
 
----
 
 ## 4. Grupos y privilegios por usuario y módulo
 
@@ -55,8 +51,6 @@ Cada persona recibe únicamente los permisos que necesita para su puesto:
 | Javier Morales Ortega | Administración / Facturación | Interno | **Sin acceso** | **Facturación** (puede facturar y registrar pagos) | Sin acceso | Acceso estándar | SolVerde Energía / Administración *(opcional)* | Emite facturas y cobra, pero no puede crear ni modificar ventas. |
 | Carmen Ruiz Navarro | Cliente | Portal | — | — | — | — | — | Solo consulta sus propios pedidos y facturas desde el portal. |
 
-
----
 
 ## 5. Grupo propio: SolVerde Energía / Comercial junior
 
@@ -87,69 +81,3 @@ Cada persona recibe únicamente los permisos que necesita para su puesto:
 | Comercial junior: productos | `product.template` (Plantilla de producto) | ✔ | ✘ | ✘ | ✘ | Puede consultar el catálogo para presupuestar, pero no cambiar precios ni productos. |
 | Comercial junior: contactos | `res.partner` (Contacto) | ✔ | ✔ | ✔ | ✘ | Puede dar de alta y actualizar clientes, pero no borrarlos. |
 
-
-### 5.4. Menús y reglas de registro (opcional)
-
-| Elemento | Configuración |
-|---|---|
-| Menús | Sin menús extra. El grupo no da acceso a Contabilidad/Facturación. |
-| Regla de registro | Se mantiene la regla estándar de Ventas: solo ve los presupuestos de los que es comercial (`user_id = usuario actual`). |
-
----
-
-## 6. Demostración de que los permisos funcionan
-
-Iniciar sesión con cada usuario (puedes usar ventanas de incógnito) y hacer las comprobaciones. Anota y captura pantalla de cada una.
-
-### 6.1. Lucía Fernández Mora (Comercial)
-
-| Prueba | Resultado esperado |
-|---|---|
-| Abrir el menú de aplicaciones | Ve Ventas (y Contactos), pero **no** Contabilidad/Facturación. |
-| Crear un presupuesto | ✔ Permitido. |
-| Ver los presupuestos de otros comerciales | ✘ Solo ve los suyos. |
-| Eliminar un pedido de venta | ✘ No aparece la opción *Eliminar*. |
-| Eliminar un cliente | ✘ No puede borrarlo. |
-| Modificar el precio de un producto del catálogo | ✘ Solo lectura. |
-
-### 6.2. Álvaro Gutiérrez Sanz (Responsable de ventas)
-
-| Prueba | Resultado esperado |
-|---|---|
-| Ver los presupuestos de Lucía | ✔ Ve todos los presupuestos y pedidos. |
-| Acceso a informes de ventas de todo el equipo | ✔ Permitido. |
-| Abrir el menú de Contabilidad/Facturación | ✘ No aparece. |
-| Consultar stock en Inventario | ✔ Permitido. |
-
-### 6.3. Javier Morales Ortega (Administración)
-
-| Prueba | Resultado esperado |
-|---|---|
-| Abrir Facturación | ✔ Aparece el menú. |
-| Crear una factura y registrar un pago | ✔ Permitido. |
-| Abrir el menú de Ventas | ✘ No aparece. |
-| Crear un presupuesto de venta | ✘ Sin acceso. |
-
-### 6.4. Carmen Ruiz Navarro (Portal)
-
-| Prueba | Resultado esperado |
-|---|---|
-| Iniciar sesión | Entra a `/my` (portal). No al backend. |
-| Ver sus pedidos y facturas | ✔ Solo los suyos. |
-| Acceder a `/odoo` | ✘ No tiene acceso. |
-
----
-
-## 7. Pasos para crearlo en Odoo
-
-1. **Activar el modo desarrollador:** Ajustes → *Activar el modo de desarrollador*.
-2. **Crear el grupo propio:** Ajustes → Usuarios y compañías → **Grupos** → Nuevo.
-   - Nombre: `Comercial junior` y aplicación/categoría: `SolVerde Energía`.
-   - Pestaña *Heredado*: añadir *Ventas / Usuario: solo mostrar documentos propios*.
-   - Pestaña *Derechos de acceso*: añadir las tres líneas del apartado 5.3.
-3. **Crear los usuarios:** Ajustes → Usuarios y compañías → **Usuarios** → Nuevo.
-   - Rellenar nombre, correo de acceso, foto/avatar y contraseña.
-   - Pestaña *Derechos de acceso*: aplicar la tabla del apartado 4.
-   - A Lucía asignarle además el grupo **SolVerde Energía / Comercial junior**.
-4. **Crear el usuario portal:** abrir la ficha del cliente → *Acciones* → **Conceder acceso al portal** (o crear el usuario con tipo *Portal*).
-5. **Comprobar:** hacer el apartado 6 y guardar las capturas.
