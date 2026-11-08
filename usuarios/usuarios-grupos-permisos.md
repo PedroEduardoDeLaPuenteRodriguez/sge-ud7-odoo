@@ -3,7 +3,6 @@
 **Empresa:** SolVerde Energía, S.L. (datos ficticios)
 **Autor:** Pedro Eduardo De La Puente Rodriguez
 
-> Todos los nombres, correos y contraseñas de este documento son inventados y solo sirven para la práctica.
 
 ## 1. Principio aplicado: mínimo privilegio
 
@@ -24,8 +23,7 @@ Cada persona recibe únicamente los permisos que necesita para su puesto:
 | **Álvaro Gutiérrez Sanz** | alvaro.gutierrez@solverde-energia.example | Foto o avatar con iniciales **AG** | Responsable de ventas | Interno |
 | **Lucía Fernández Mora** | lucia.fernandez@solverde-energia.example | Avatar con iniciales **LF** | Comercial | Interno |
 | **Javier Morales Ortega** | javier.morales@solverde-energia.example | Avatar con iniciales **JM** | Administración / Facturación | Interno |
-
-> Contraseña de pruebas sugerida para los tres: `SolVerde#2026` (solo para esta práctica).
+.
 
 ### 2.2. Usuario portal (cliente)
 
@@ -33,7 +31,6 @@ Cada persona recibe únicamente los permisos que necesita para su puesto:
 |---|---|---|---|
 | **Carmen Ruiz Navarro** | carmen.ruiz@correo-ficticio.example | Cliente particular (instalación de un kit solar en su vivienda) | Portal |
 
-> Usa el cliente particular que hayas creado en el apartado 3 de la práctica. Si tus clientes se llaman distinto, cambia aquí el nombre y el correo.
 
 ---
 
@@ -58,7 +55,6 @@ Cada persona recibe únicamente los permisos que necesita para su puesto:
 | Javier Morales Ortega | Administración / Facturación | Interno | **Sin acceso** | **Facturación** (puede facturar y registrar pagos) | Sin acceso | Acceso estándar | SolVerde Energía / Administración *(opcional)* | Emite facturas y cobra, pero no puede crear ni modificar ventas. |
 | Carmen Ruiz Navarro | Cliente | Portal | — | — | — | — | — | Solo consulta sus propios pedidos y facturas desde el portal. |
 
-> Los nombres exactos de los privilegios pueden variar un poco según la versión de Odoo (por ejemplo, «Facturación» puede aparecer como *Billing*). Elige siempre el nivel que no incluye gestión de contabilidad completa.
 
 ---
 
@@ -80,7 +76,6 @@ Cada persona recibe únicamente los permisos que necesita para su puesto:
 | **Ventas / Usuario: solo mostrar documentos propios** | Acceso a la app Ventas y visibilidad solo de sus propios presupuestos y pedidos. |
 | **Usuario interno** (heredado automáticamente) | Acceso al backend de Odoo. |
 
-> No hereda ningún grupo de Contabilidad/Facturación ni de Administrador de ventas.
 
 ### 5.3. Derechos de acceso sobre modelos
 
@@ -92,7 +87,6 @@ Cada persona recibe únicamente los permisos que necesita para su puesto:
 | Comercial junior: productos | `product.template` (Plantilla de producto) | ✔ | ✘ | ✘ | ✘ | Puede consultar el catálogo para presupuestar, pero no cambiar precios ni productos. |
 | Comercial junior: contactos | `res.partner` (Contacto) | ✔ | ✔ | ✔ | ✘ | Puede dar de alta y actualizar clientes, pero no borrarlos. |
 
-> Estos derechos se **suman** a los que ya trae el grupo heredado. Los que dejan una casilla sin marcar (✘) refuerzan lo que no puede hacer, que se comprobará en la demostración.
 
 ### 5.4. Menús y reglas de registro (opcional)
 
